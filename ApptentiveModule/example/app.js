@@ -66,6 +66,11 @@ messageCenterCountButton.addEventListener('click',function(e)
   	messageCenterCountButton.title = ApptentiveModule.unreadMessageCount();
 });
 
+ApptentiveModule.addEventListener('ATMessageCenterUnreadCountChangedNotification', function(e) {
+    Ti.API.info('EVENT! ' + e.type);
+  	messageCenterCountButton.title = ApptentiveModule.unreadMessageCount();
+});
+
 //Rating Flow
 var showRatingsFlowButton = Titanium.UI.createButton({
    title: "Rating flow",
@@ -150,6 +155,19 @@ win.add(hasSurveyWithTagsButton);
 hasSurveyWithTagsButton.addEventListener('click',function(e)
 {
    hasSurveyWithTagsButton.title = ApptentiveModule.hasSurveyAvailableWithTags("testsurvey", "testtag");
+});
+
+//Survey notifications
+ApptentiveModule.addEventListener('ATSurveyNewSurveyAvailableNotification', function(e) {
+    Ti.API.info('EVENT! ' + e.type);
+    hasSurveyNoTagsButton.title = ApptentiveModule.hasSurveyAvailableWithNoTags();
+    hasSurveyWithTagsButton.title = ApptentiveModule.hasSurveyAvailableWithTags("testsurvey", "testtag");
+});
+
+ApptentiveModule.addEventListener('ATSurveySentNotification', function(e) {
+    Ti.API.info('EVENT! ' + e.type);
+    hasSurveyNoTagsButton.title = ApptentiveModule.hasSurveyAvailableWithNoTags();
+    hasSurveyWithTagsButton.title = ApptentiveModule.hasSurveyAvailableWithTags("testsurvey", "testtag");
 });
 
 

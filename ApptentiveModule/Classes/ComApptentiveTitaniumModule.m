@@ -38,6 +38,20 @@
 	[super startup];
 	
 	NSLog(@"[INFO] %@ loaded",self);
+    
+    //Apptentive
+    ATConnect *connection __attribute__((unused)) = [ATConnect sharedConnection];
+    
+    //Message Center
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(unreadMessageCountChanged:) name:ATMessageCenterUnreadCountChangedNotification object:nil];
+    
+    //Rating Flow
+    //ATAppRatingFlow *sharedRatingFlow = [ATAppRatingFlow sharedRatingFlowWithAppID:@"<your iTunes app ID>"];
+    //[sharedRatingFlow showRatingFlowFromViewControllerIfConditionsAreMet:[[ForgeApp sharedApp] viewController]];
+    
+    //Survey Notifications
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(surveyBecameAvailable:) name:ATSurveyNewSurveyAvailableNotification object:nil];
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(surveyWasSent:) name:ATSurveySentNotification object:nil];
 }
 
 -(void)shutdown:(id)sender
@@ -149,8 +163,13 @@
 
 - (id)unreadMessageCount:(id)args
 {
-    NSUInteger *count = [[ATConnect sharedConnection] unreadMessageCount];
+    int *count = (int)[[ATConnect sharedConnection] unreadMessageCount];
     return [NSNumber numberWithInt:count];
+}
+
+- (void)unreadMessageCountChanged:(NSNotification *)notification
+{    
+    [self fireEvent:ATMessageCenterUnreadCountChangedNotification withObject:notification.userInfo];
 }
 
 #pragma mark Ratings Flow
@@ -181,6 +200,11 @@
     return [NSNumber numberWithBool:hasSurvey];
 }
 
+- (void)surveyBecameAvailable:(NSNotification *)notification
+{    
+    [self fireEvent:ATSurveyNewSurveyAvailableNotification withObject:notification.userInfo];
+}
+
 - (void)presentSurveyControllerWithNoTags:(id)args
 {
     ENSURE_UI_THREAD_0_ARGS
@@ -192,6 +216,11 @@
     ENSURE_UI_THREAD_1_ARG(args)
     NSSet *tags = [NSSet setWithArray:args];
     [ATSurveys presentSurveyControllerWithTags:tags fromViewController:[[TiApp app] controller]];
+}
+
+- (void)surveyWasSent:(NSNotification *)notification
+{
+    [self fireEvent:ATSurveySentNotification withObject:notification.userInfo];
 }
 
 #pragma Public APIs
