@@ -1,0 +1,3 @@
+[submodule "ApptentiveModule/apptentive-ios"]
+	path = ApptentiveModule/apptentive-ios
+	url = https://pkamb@github.com/apptentive/apptentive-ios.git
