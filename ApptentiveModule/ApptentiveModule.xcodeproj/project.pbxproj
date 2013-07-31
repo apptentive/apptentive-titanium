@@ -27,6 +27,9 @@
 		24DE9E1111C5FE74003F90F6 /* ComApptentiveTitaniumModuleAssets.h in Headers */ = {isa = PBXBuildFile; fileRef = 24DE9E0F11C5FE74003F90F6 /* ComApptentiveTitaniumModuleAssets.h */; };
 		24DE9E1211C5FE74003F90F6 /* ComApptentiveTitaniumModuleAssets.m in Sources */ = {isa = PBXBuildFile; fileRef = 24DE9E1011C5FE74003F90F6 /* ComApptentiveTitaniumModuleAssets.m */; };
 		582FA1BC17A8906700B618D5 /* libApptentiveConnect.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 582FA1B317A88E2B00B618D5 /* libApptentiveConnect.a */; };
+		582FA1C617A8949200B618D5 /* ATConnect.h in Resources */ = {isa = PBXBuildFile; fileRef = 582FA1C317A8949200B618D5 /* ATConnect.h */; };
+		582FA1C717A8949200B618D5 /* ATSurveys.h in Resources */ = {isa = PBXBuildFile; fileRef = 582FA1C417A8949200B618D5 /* ATSurveys.h */; };
+		582FA1C817A8949200B618D5 /* ATAppRatingFlow.h in Resources */ = {isa = PBXBuildFile; fileRef = 582FA1C517A8949200B618D5 /* ATAppRatingFlow.h */; };
 		586D76ED17A2FD6200370BBC /* StoreKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 586D76E817A2FCEA00370BBC /* StoreKit.framework */; };
 		586D76EF17A301E400370BBC /* CoreData.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 586D76EE17A301E400370BBC /* CoreData.framework */; };
 		586D76F217A301E800370BBC /* CoreTelephony.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 586D76F017A301E800370BBC /* CoreTelephony.framework */; };
@@ -92,6 +95,9 @@
 		24DE9E0F11C5FE74003F90F6 /* ComApptentiveTitaniumModuleAssets.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ComApptentiveTitaniumModuleAssets.h; path = Classes/ComApptentiveTitaniumModuleAssets.h; sourceTree = "<group>"; };
 		24DE9E1011C5FE74003F90F6 /* ComApptentiveTitaniumModuleAssets.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ComApptentiveTitaniumModuleAssets.m; path = Classes/ComApptentiveTitaniumModuleAssets.m; sourceTree = "<group>"; };
 		582FA1AC17A88E2A00B618D5 /* ApptentiveConnect.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = ApptentiveConnect.xcodeproj; path = "apptentive-ios/ApptentiveConnect/ApptentiveConnect.xcodeproj"; sourceTree = "<group>"; };
+		582FA1C317A8949200B618D5 /* ATConnect.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file; name = ATConnect.h; path = "apptentive-ios/ApptentiveConnect/source/ATConnect.h"; sourceTree = "<group>"; };
+		582FA1C417A8949200B618D5 /* ATSurveys.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file; name = ATSurveys.h; path = "apptentive-ios/ApptentiveConnect/source/Surveys/ATSurveys.h"; sourceTree = "<group>"; };
+		582FA1C517A8949200B618D5 /* ATAppRatingFlow.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file; name = ATAppRatingFlow.h; path = "apptentive-ios/ApptentiveConnect/source/Rating Flow/ATAppRatingFlow.h"; sourceTree = "<group>"; };
 		586D76E817A2FCEA00370BBC /* StoreKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = StoreKit.framework; path = System/Library/Frameworks/StoreKit.framework; sourceTree = SDKROOT; };
 		586D76EE17A301E400370BBC /* CoreData.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreData.framework; path = System/Library/Frameworks/CoreData.framework; sourceTree = SDKROOT; };
 		586D76F017A301E800370BBC /* CoreTelephony.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreTelephony.framework; path = System/Library/Frameworks/CoreTelephony.framework; sourceTree = SDKROOT; };
@@ -176,6 +182,9 @@
 		32C88DFF0371C24200C91783 /* Other Sources */ = {
 			isa = PBXGroup;
 			children = (
+				582FA1C317A8949200B618D5 /* ATConnect.h */,
+				582FA1C417A8949200B618D5 /* ATSurveys.h */,
+				582FA1C517A8949200B618D5 /* ATAppRatingFlow.h */,
 				AA747D9E0F9514B9006C5449 /* ComApptentiveTitanium_Prefix.pch */,
 				24DD6D1B1134B66800162E58 /* titanium.xcconfig */,
 			);
@@ -290,6 +299,9 @@
 			buildActionMask = 2147483647;
 			files = (
 				586D771617A3165800370BBC /* libComApptentiveTitanium.a in Resources */,
+				582FA1C617A8949200B618D5 /* ATConnect.h in Resources */,
+				582FA1C717A8949200B618D5 /* ATSurveys.h in Resources */,
+				582FA1C817A8949200B618D5 /* ATAppRatingFlow.h in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
