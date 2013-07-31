@@ -1,5 +1,7 @@
 /**
- * Your Copyright Here
+ * Copyright 2013 Apptentive, Inc.. All rights reserved.
+ *
+ * Created by Peter Kamb on 7/30/13.
  *
  * Appcelerator Titanium is Copyright (c) 2009-2010 by Appcelerator, Inc.
  * and licensed under the Apache Public License (version 2)
@@ -42,13 +44,9 @@
     //Apptentive
     ATConnect *connection __attribute__((unused)) = [ATConnect sharedConnection];
     
-    //Message Center
+    //Message Center Notifications
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(unreadMessageCountChanged:) name:ATMessageCenterUnreadCountChangedNotification object:nil];
-    
-    //Rating Flow
-    //ATAppRatingFlow *sharedRatingFlow = [ATAppRatingFlow sharedRatingFlowWithAppID:@"<your iTunes app ID>"];
-    //[sharedRatingFlow showRatingFlowFromViewControllerIfConditionsAreMet:[[ForgeApp sharedApp] viewController]];
-    
+        
     //Survey Notifications
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(surveyBecameAvailable:) name:ATSurveyNewSurveyAvailableNotification object:nil];
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(surveyWasSent:) name:ATSurveySentNotification object:nil];
@@ -62,6 +60,11 @@
 	
 	// you *must* call the superclass
 	[super shutdown:sender];
+    
+    //Apptentive
+    [[NSNotificationCenter defaultCenter] removeObserver:self name:ATMessageCenterUnreadCountChangedNotification object:nil];
+    [[NSNotificationCenter defaultCenter] removeObserver:self name:ATSurveyNewSurveyAvailableNotification object:nil];
+    [[NSNotificationCenter defaultCenter] removeObserver:self name:ATSurveySentNotification object:nil];
 }
 
 #pragma mark Cleanup 
@@ -85,21 +88,32 @@
 
 -(void)_listenerAdded:(NSString *)type count:(int)count
 {
-	if (count == 1 && [type isEqualToString:@"my_event"])
-	{
-		// the first (of potentially many) listener is being added 
-		// for event named 'my_event'
-	}
+    if ([type isEqualToString:ATMessageCenterUnreadCountChangedNotification]) {
+        NSLog(@"[INFO] Added listener for Apptentive Message Center unread count.");
+    }
+    
+    if ([type isEqualToString:ATSurveyNewSurveyAvailableNotification]) {
+        NSLog(@"[INFO] Added listener for new Apptentive surveys.");
+    }
+    
+    if ([type isEqualToString:ATSurveySentNotification]) {
+        NSLog(@"[INFO] Added listener for Apptentive survey send events.");
+    }
 }
 
 -(void)_listenerRemoved:(NSString *)type count:(int)count
 {
-	if (count == 0 && [type isEqualToString:@"my_event"])
-	{
-		// the last listener called for event named 'my_event' has
-		// been removed, we can optionally clean up any resources
-		// since no body is listening at this point for that event
-	}
+    if ([type isEqualToString:ATMessageCenterUnreadCountChangedNotification]) {
+        NSLog(@"[INFO] Removed listener for Apptentive Message Center unread count.");
+    }
+    
+    if ([type isEqualToString:ATSurveyNewSurveyAvailableNotification]) {
+        NSLog(@"[INFO] Removed listener for new Apptentive surveys.");
+    }
+    
+    if ([type isEqualToString:ATSurveySentNotification]) {
+        NSLog(@"[INFO] Removed listener for Apptentive survey send events.");
+    }
 }
 
 #pragma mark Apptentive Shared Features
@@ -133,7 +147,8 @@
     return [[ATConnect sharedConnection] initialUserEmailAddress];
 }
 
-- (void)setInitialUserEmailAddress:(id)args {
+- (void)setInitialUserEmailAddress:(id)args
+{
     ENSURE_SINGLE_ARG(args, NSString);
     NSString *initialUserEmailAddress = [TiUtils stringValue:args];
     [[ATConnect sharedConnection] setInitialUserEmailAddress:initialUserEmailAddress];
@@ -168,8 +183,10 @@
 }
 
 - (void)unreadMessageCountChanged:(NSNotification *)notification
-{    
-    [self fireEvent:ATMessageCenterUnreadCountChangedNotification withObject:notification.userInfo];
+{
+    if ([self _hasListeners:ATMessageCenterUnreadCountChangedNotification]) {
+        [self fireEvent:ATMessageCenterUnreadCountChangedNotification withObject:notification.userInfo];
+    }
 }
 
 #pragma mark Ratings Flow
@@ -201,8 +218,10 @@
 }
 
 - (void)surveyBecameAvailable:(NSNotification *)notification
-{    
-    [self fireEvent:ATSurveyNewSurveyAvailableNotification withObject:notification.userInfo];
+{
+    if ([self _hasListeners:ATSurveyNewSurveyAvailableNotification]) {
+        [self fireEvent:ATSurveyNewSurveyAvailableNotification withObject:notification.userInfo];
+    }
 }
 
 - (void)presentSurveyControllerWithNoTags:(id)args
@@ -220,26 +239,9 @@
 
 - (void)surveyWasSent:(NSNotification *)notification
 {
-    [self fireEvent:ATSurveySentNotification withObject:notification.userInfo];
-}
-
-#pragma Public APIs
-
--(id)example:(id)args
-{
-	// example method
-    return @"hello world";
-}
-
--(id)exampleProp
-{
-	// example property getter
-	return @"hello world";
-}
-
--(void)setExampleProp:(id)value
-{
-	// example property setter
+    if ([self _hasListeners:ATSurveySentNotification]) {
+        [self fireEvent:ATSurveySentNotification withObject:notification.userInfo];
+    }
 }
 
 @end
