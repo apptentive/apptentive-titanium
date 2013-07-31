@@ -1,0 +1,18 @@
+#
+# this is your module manifest and used by Titanium
+# during compilation, packaging, distribution, etc.
+#
+version: 0.1
+apiversion: 2
+description: Apptentive module for Titanium
+author: Apptentive
+license: Specify your license
+copyright: Copyright 2013 Apptentive
+
+
+# these should not be edited
+name: ApptentiveModule
+moduleid: com.apptentive.titanium
+guid: c103d324-0b82-4f61-92dc-9becc11d790b
+platform: iphone
+minsdk: 3.1.1.GA
