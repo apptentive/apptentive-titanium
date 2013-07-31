@@ -9,9 +9,6 @@
 #import "TiHost.h"
 #import "TiUtils.h"
 #import "TiApp.h"
-#import "ATConnect.h"
-#import "ATAppRatingFlow.h"
-#import "ATSurveys.h"
 
 @implementation ComApptentiveTitaniumModule
 
@@ -86,112 +83,6 @@
 		// been removed, we can optionally clean up any resources
 		// since no body is listening at this point for that event
 	}
-}
-
-#pragma mark Apptentive Shared Features
-
-- (id)apiKey:(id)args
-{
-    return [[ATConnect sharedConnection] apiKey];
-}
-
-- (void)setApiKey:(id)args
-{
-    ENSURE_SINGLE_ARG(args, NSString);
-    NSString *apiKey = [TiUtils stringValue:args];
-    [[ATConnect sharedConnection] setApiKey:apiKey];
-}
-
-- (id)initialUserName:(id)args
-{
-    return [[ATConnect sharedConnection] initialUserName];
-}
-
-- (void)setInitialUserName:(id)args
-{
-    ENSURE_SINGLE_ARG(args, NSString);
-    NSString *initialUserName = [TiUtils stringValue:args];
-    [[ATConnect sharedConnection] setInitialUserName:initialUserName];
-}
-
-- (id)initialUserEmailAddress:(id)args
-{
-    return [[ATConnect sharedConnection] initialUserEmailAddress];
-}
-
-- (void)setInitialUserEmailAddress:(id)args {
-    ENSURE_SINGLE_ARG(args, NSString);
-    NSString *initialUserEmailAddress = [TiUtils stringValue:args];
-    [[ATConnect sharedConnection] setInitialUserEmailAddress:initialUserEmailAddress];
-}
-
-- (void)addCustomDataWithKey:(id)args
-{
-    NSObject<NSCoding> *data = [((NSArray *)args) objectAtIndex:0];
-    NSString *key = [((NSArray *)args) objectAtIndex:1];
-    [[ATConnect sharedConnection] addCustomData:data withKey:key];
-}
-
-- (void)removeCustomDataWithKey:(id)args
-{
-    ENSURE_SINGLE_ARG(args, NSString);
-    NSString *key = [TiUtils stringValue:args];
-    [[ATConnect sharedConnection] removeCustomDataWithKey:key];
-}
-
-#pragma mark Message Center
-
-- (void)presentMessageCenter:(id)args
-{
-    ENSURE_UI_THREAD_0_ARGS;
-    [[ATConnect sharedConnection] presentMessageCenterFromViewController:[TiApp app].controller];
-}
-
-- (id)unreadMessageCount:(id)args
-{
-    NSUInteger *count = [[ATConnect sharedConnection] unreadMessageCount];
-    return [NSNumber numberWithInt:count];
-}
-
-#pragma mark Ratings Flow
-
-- (void)showRatingFlowIfConditionsAreMet:(id)args
-{
-    ENSURE_UI_THREAD_0_ARGS;
-    [[ATAppRatingFlow sharedRatingFlow] showRatingFlowFromViewControllerIfConditionsAreMet:[[TiApp app] controller]];
-}
-
-- (void)logSignificantEvent:(id)args
-{
-    [[ATAppRatingFlow sharedRatingFlow] logSignificantEvent];
-}
-
-#pragma mark - Surveys
-
-- (id)hasSurveyAvailableWithNoTags:(id)args
-{
-    BOOL hasSurvey = [ATSurveys hasSurveyAvailableWithNoTags];
-    return [NSNumber numberWithBool:hasSurvey];
-}
-
-- (id)hasSurveyAvailableWithTags:(id)args
-{
-    NSSet *tags = [NSSet setWithArray:args];
-    BOOL hasSurvey = [ATSurveys hasSurveyAvailableWithTags:tags];
-    return [NSNumber numberWithBool:hasSurvey];
-}
-
-- (void)presentSurveyControllerWithNoTags:(id)args
-{
-    ENSURE_UI_THREAD_0_ARGS
-    [ATSurveys presentSurveyControllerWithNoTagsFromViewController:[[TiApp app] controller]];
-}
-
-- (void)presentSurveyControllerWithTags:(id)args
-{
-    ENSURE_UI_THREAD_1_ARG(args)
-    NSSet *tags = [NSSet setWithArray:args];
-    [ATSurveys presentSurveyControllerWithTags:tags fromViewController:[[TiApp app] controller]];
 }
 
 #pragma Public APIs
