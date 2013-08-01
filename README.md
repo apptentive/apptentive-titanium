@@ -87,13 +87,84 @@ messageCenterButton.addEventListener('click',function(e)
 });
 ```
    
+##Message Center
 
+Get feedback from your customers with the Apptentive Message Center.
 
+    apptentiveModule.presentMessageCenter();
 
+The first time you present the Message Center, the user will be presented with an email feedback form. Thereafter, they will be taken to the Message Center. If you reply to your customers' feedback via the Apptentive website, the replies will be pushed to their in-app Message Center. 
 
+Check for the number of unread messages like so:
 
+    apptentiveModule.unreadMessageCount(); 
 
+You can also listen for our `ATMessageCenterUnreadCountChangedNotification` notification:
 
+    apptentiveModule.addEventListener('ATMessageCenterUnreadCountChangedNotification', function(e) {
+        Ti.API.info('New unread Message Center messages! ' + e.type);
+    }); 
 
+##User info
 
+You can pre-load Apptentive with information about the user, which makes the Message Center experience easier:
 
+    apptentiveModule.setInitialUserName("Peter");
+	apptentiveModule.setInitialUserEmailAddress("peter@example.com");
+
+You can also store arbitrary information about the user, which is then visible when you talk to them via Apptentive.com
+
+    apptentiveModule.addCustomDataWithKey("data", "key");
+    apptentiveModule.addCustomDataWithKey("Seattle", "city");
+
+Similarly, you can remove custom data:
+
+	apptentiveModule.removeCustomDataWithKey("city");
+
+##App Store Rating Flow
+
+Apptentive also provides an App Store rating flow. A ratings dialog will be displayed based on the number of launches of your application, the amount of time the user has been using it, and the number of significant events the user has completed (for example, levels passed). All of these variables can be modified on Apptentive.com.
+
+Display the rating flow at a certain point in your code with:
+
+    apptentiveModule.showRatingFlowIfConditionsAreMet();
+
+The rating flow will only be shown if all conditions (number of launches, significant events, etc.) have been met.
+
+Log significant events, such as completing a level, with:
+
+    apptentiveModule.logSignificantEvent();
+
+##In-App Surveys
+
+Surveys can be created on our website and presented, in-app, to users.
+
+You can check if there are any available surveys that have been downloaded from the server:
+
+    apptentiveModule.hasSurveyAvailableWithNoTags();
+	//...or...//
+    apptentiveModule.hasSurveyAvailableWithTags("testSurvey", "testTag");	
+
+You can also listen for our `ATSurveyNewSurveyAvailableNotification` notification:
+
+    apptentiveModule.addEventListener('ATSurveyNewSurveyAvailableNotification', function(e) {
+        Ti.API.info('New Apptentive Surveys! ' + e.type);
+    });
+
+If surveys are available, present the surveys in the app:
+
+    apptentiveModule.presentSurveyControllerWithNoTags();
+    //...or...//
+    apptentiveModule.presentSurveyControllerWithTags("testsurvey", "testtag");
+
+We will then send a notification when the survey has been sent to Apptentive:
+
+	apptentiveModule.addEventListener('ATSurveySentNotification', function(e) {
+	    Ti.API.info('Apptentive Survey was sent! ' + e.type);
+	});
+
+##Questions? Comments? Help using Apptentive?
+
+Please let us know how we can improve this document!
+
+https://github.com/apptentive/apptentive-titanium/issues

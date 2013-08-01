@@ -140,7 +140,6 @@ var surveyWithTagsButton = Titanium.UI.createButton({
 win.add(surveyWithTagsButton);
 surveyWithTagsButton.addEventListener('click',function(e)
 {
-   ApptentiveModule.presentSurveyControllerWithTags("testsurvey", "testtag"),
    ApptentiveModule.presentSurveyControllerWithTags("testsurvey", "testtag");
 });
 
