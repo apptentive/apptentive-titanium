@@ -107,12 +107,12 @@ You can also listen for our `ATMessageCenterUnreadCountChangedNotification` noti
 
 ##User info
 
-You can pre-load Apptentive with information about the user, which makes the Message Center experience easier:
+You can pre-load Apptentive with information about the user, which makes their Message Center experience easier:
 
     apptentiveModule.setInitialUserName("Peter");
 	apptentiveModule.setInitialUserEmailAddress("peter@example.com");
 
-You can also store arbitrary information about the user, which is then visible when you talk to them via Apptentive.com
+You can also store arbitrary information about the user, which is then visible in your Message Center.
 
     apptentiveModule.addCustomDataWithKey("data", "key");
     apptentiveModule.addCustomDataWithKey("Seattle", "city");
@@ -155,7 +155,7 @@ If surveys are available, present the surveys in the app:
 
     apptentiveModule.presentSurveyControllerWithNoTags();
     //...or...//
-    apptentiveModule.presentSurveyControllerWithTags("testsurvey", "testtag");
+    apptentiveModule.presentSurveyControllerWithTags("testSurvey", "testTag");
 
 We will then send a notification when the survey has been sent to Apptentive:
 
@@ -165,6 +165,10 @@ We will then send a notification when the survey has been sent to Apptentive:
 
 ##Questions? Comments? Help using Apptentive?
 
-Please let us know how we can improve this document!
+Please let us know how we can improve this document or the Apptentive Titanium module!
 
 https://github.com/apptentive/apptentive-titanium/issues
+
+If you have any other questions, please contact us and we will get back to you quickly.
+
+http://www.apptentive.com/contact
