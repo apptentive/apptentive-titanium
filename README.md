@@ -1,15 +1,12 @@
 #Apptentive module for Titanium
-===================
 
 The Apptentive Titanium module allows you to add a quick and easy in-app-feedback mechanism to your Titanium applications. Feedback is sent to the Apptentive web service.
 
 ##Available on the Titanium Marketplace
-===================
 
 The module will soon be available through the [Titanium Marketplace](https://marketplace.appcelerator.com/).
 
 ##Available as a packaged module
-===================
 
 A packaged version of the Apptentive module can be found under the [Release](https://github.com/apptentive/apptentive-titanium/releases) tab of this repository.
 
@@ -18,7 +15,6 @@ The packaged module is released as a .zip file:
     com.apptentive.titanium-iphone-1.0.zip
 
 ###Installing the packaged Apptentive module
-===================
 
 The Apptentive module package (above) should be unzipped into your Titanium directory:
 
@@ -31,10 +27,10 @@ Then, in your Titanium app, edit the `tiapp.xml` file. Add the following near th
     <modules>
         <module version="1.0">com.apptentive.titanium</module>
     </modules>
-	
+
 Your final `tiapp.xml` file should look similar to the following:
 
-```
+``` XML
 <ti:app xmlns:ti="http://ti.appcelerator.org">
   <id>com.example.test</id>
   <name>testapp</name>
@@ -52,7 +48,6 @@ Your final `tiapp.xml` file should look similar to the following:
 ```
 
 ###Test that the module is correctly installed
-===================
 
 Test that you have installed the module correctly by editing `app.js` in your Titanium app's resource directory:
 
@@ -65,11 +60,10 @@ When you run your Titanium app, you should see the following:
 
 	[INFO] [object ComApptentiveTitaniumModule] loaded
 	[INFO] module is => [object ComApptentiveTitaniumModule]
-	
+
 If you see these statements and no errors in the console, the Apptentive module has been installed and loaded correctly in your Titanium app.
 
 ##Using the Apptentive module in your Titanium app
-===================
 
 Once you have successfully installed the module, you can begin using Apptentive in your Titanium app.
 
@@ -78,9 +72,9 @@ Once you have successfully installed the module, you can begin using Apptentive 
 
 It is important that you set your Apptentive API key, which you can get by signing up [on our website](http://www.apptentive.com/).
 
-You can then begin using the features of Apptentive. For example, you could add a "Give Feedback" button to your interface that collects feedback via Apptentive's Message Center (`apptentiveModule.presentMessageCenter()`).
+You can then begin using the features of Apptentive. For example, you could add a "Give Feedback" button to your interface that collects feedback via Apptentive's Message Center.
 
-```
+``` JavaScript
 var messageCenterButton = Titanium.UI.createButton({
    title: "Give Feedback",
    width: 200,
