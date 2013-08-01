@@ -112,7 +112,7 @@ You can pre-load Apptentive with information about the user, which makes their M
     apptentiveModule.setInitialUserName("Peter");
 	apptentiveModule.setInitialUserEmailAddress("peter@example.com");
 
-You can also store arbitrary information about the user, which is then visible in your Message Center.
+You can also store arbitrary information about the user, which is then visible in your Message Center:
 
     apptentiveModule.addCustomDataWithKey("data", "key");
     apptentiveModule.addCustomDataWithKey("Seattle", "city");
