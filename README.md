@@ -2,11 +2,13 @@
 
 The Apptentive Titanium module allows you to add a quick and easy in-app-feedback mechanism to your Titanium applications. Feedback is sent to the Apptentive web service.
 
-##Available on the Titanium Marketplace
+##Available on the Appcelerator Marketplace
 
-The Apptentive Titanium module is [available on the Titanium Marketplate](https://marketplace.appcelerator.com/apps/6222?1766037170).
+[![Appcelerator logo](etc/screenshots/appcelerator_logo.png?raw=true "Appcelerator Marketplace")](https://marketplace.appcelerator.com/apps/6222?19103220)
 
-##Available as a packaged module
+The Apptentive Titanium module is [available on the Appcelerator Open Mobile Marketplate](https://marketplace.appcelerator.com/apps/6222?1766037170).
+
+##Available on Github as a packaged module
 
 A packaged version of the Apptentive module can be found under the [Release](https://github.com/apptentive/apptentive-titanium/releases) tab of this repository.
 
