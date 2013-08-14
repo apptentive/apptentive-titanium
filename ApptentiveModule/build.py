@@ -5,6 +5,7 @@
 #
 import os, subprocess, sys, glob, string
 import zipfile
+import biplist
 from datetime import date
 
 cwd = os.path.abspath(os.path.dirname(sys._getframe(0).f_code.co_filename))
@@ -178,6 +179,17 @@ def build_module(manifest,config):
 		libpaths+='%s ' % libfile
 
 	os.system("lipo %s -create -output build/lib%s.a" %(libpaths,moduleid))
+	
+def set_apptentive_distribution_key():
+	# Update the Info.plist in the ApptentiveResources.bundle.
+	bundle_plist_path = os.path.join(os.getcwd(), "assets/ApptentiveResources.bundle/Info.plist")
+	if not os.path.exists(bundle_plist_path):
+		print("Unable to find bundle Info.plist at %s" % bundle_plist_path)
+		return False
+	plist = biplist.readPlist(bundle_plist_path)
+	plist_key = "ATInfoDistributionKey"
+	plist[plist_key] = "Titanium"
+	biplist.writePlist(plist, bundle_plist_path)
 
 def package_module(manifest,mf,config):
 	name = manifest['name'].lower()
@@ -218,6 +230,7 @@ if __name__ == '__main__':
 
 	compile_js(manifest,config)
 	build_module(manifest,config)
+	set_apptentive_distribution_key()
 	package_module(manifest,mf,config)
 	sys.exit(0)
 
