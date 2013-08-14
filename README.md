@@ -4,7 +4,7 @@ The Apptentive Titanium module allows you to add a quick and easy in-app-feedbac
 
 ##Available on the Titanium Marketplace
 
-The module will soon be available through the [Titanium Marketplace](https://marketplace.appcelerator.com/).
+The Apptentive Titanium module is [available on the Titanium Marketplate](https://marketplace.appcelerator.com/apps/6222?1766037170).
 
 ##Available as a packaged module
 
