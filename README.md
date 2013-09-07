@@ -127,6 +127,10 @@ Similarly, you can remove custom data:
 
 Apptentive also provides an App Store rating flow. A ratings dialog will be displayed based on the number of launches of your application, the amount of time the user has been using it, and the number of significant events the user has completed (for example, levels passed). All of these variables can be modified on Apptentive.com.
 
+First, set your app's App Store ID:  
+
+    apptentiveModule.setAppID("get_this_key_from_itunes_connect");
+
 Display the rating flow at a certain point in your code with:
 
     apptentiveModule.showRatingFlowIfConditionsAreMet();
