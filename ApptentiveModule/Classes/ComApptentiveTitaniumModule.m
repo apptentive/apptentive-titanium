@@ -191,6 +191,13 @@
 
 #pragma mark Ratings Flow
 
+- (void)setAppID:(id)args
+{
+    ENSURE_SINGLE_ARG(args, NSString);
+    NSString *appID = [TiUtils stringValue:args];
+    [[ATAppRatingFlow sharedRatingFlow] setAppID:appID];
+}
+
 - (void)showRatingFlowIfConditionsAreMet:(id)args
 {
     ENSURE_UI_THREAD_0_ARGS;

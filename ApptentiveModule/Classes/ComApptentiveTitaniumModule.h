@@ -28,6 +28,7 @@
 - (id)unreadMessageCount:(id)args;
 
 #pragma mark Ratings Flow
+- (void)setAppID:(id)args;
 - (void)showRatingFlowIfConditionsAreMet:(id)args;
 - (void)logSignificantEvent:(id)args;
 
