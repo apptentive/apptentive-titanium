@@ -73,7 +73,7 @@ When you run your Titanium app, you should see the following:
 
 If you see these statements and no errors appear in the console, the Apptentive module has been installed and loaded correctly in your Titanium app.
 
-### Implementing Apptentive
+### Implement Apptentive
 
 Once you have successfully installed the module, you can begin using Apptentive in your Titanium app.
 
@@ -154,8 +154,8 @@ We will then send a notification when the survey has been sent to Apptentive. Yo
 
 You can pre-load Apptentive with information about the user, which makes their Message Center experience easier:
 
-  apptentiveModule.setInitialUserName("Peter");
-  apptentiveModule.setInitialUserEmailAddress("peter@example.com");
+    apptentiveModule.setInitialUserName("Peter");
+    apptentiveModule.setInitialUserEmailAddress("peter@example.com");
 
 You can also store arbitrary information about the user, which is then visible in your Message Center:
 
