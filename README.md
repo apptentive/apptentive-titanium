@@ -1,28 +1,36 @@
-#Apptentive module for Titanium
+# Apptentive Titanium Module
 
 The Apptentive Titanium module allows you to add a quick and easy in-app-feedback mechanism to your Titanium applications. Feedback is sent to the Apptentive web service.
 
-##Available on the Appcelerator Marketplace
+## Install Guide
+
+The following steps will lead you through installing Apptentive into your application through the Titanium development environment. This guide assumes your app has been implemented through Titanium already.
+
+### Get the Apptentive Module
+
+There are a couple of ways you can get the Apptentive Titanium Module.
+
+#### Appcelerator Marketplace
 
 [![Appcelerator logo](etc/screenshots/appcelerator_logo.png?raw=true "Appcelerator Marketplace")](https://marketplace.appcelerator.com/apps/6222?19103220)
 
-The Apptentive Titanium module is [available on the Appcelerator Open Mobile Marketplate](https://marketplace.appcelerator.com/apps/6222?1766037170).
+The Apptentive Titanium module is available on the [Appcelerator Open Mobile Marketplate](https://marketplace.appcelerator.com/apps/6222?1766037170).
 
-##Available on Github as a packaged module
+#### GitHub
 
-A packaged version of the Apptentive module can be found under the [Release](https://github.com/apptentive/apptentive-titanium/releases) tab of this repository.
+A packaged version of the Apptentive module can be found under the [Release tab](https://github.com/apptentive/apptentive-titanium/releases) of this repository.
 
 The packaged module is released as a .zip file:
 
     com.apptentive.titanium-iphone-1.0.zip
 
-###Installing the packaged Apptentive module
+### Setup the Apptentive Module
 
 The Apptentive module package (above) should be unzipped into your Titanium directory:
 
     > unzip -u -o com.apptentive.titanium-iphone-1.0.zip -d ~/Library/Application\ Support/Titanium/
 
-**NOTE**: Your Titanium SDK may be installed under `/Library` rather than `~/Library`. Adjust these commands accordingly.
+Note: Your Titanium SDK may be installed under `/Library` rather than `~/Library`. Adjust these commands accordingly.
 
 Then, in your Titanium app, edit the `tiapp.xml` file. Add the following near the end of the file:
 
@@ -49,9 +57,9 @@ Your final `tiapp.xml` file should look similar to the following:
 </ti:app>
 ```
 
-###Test that the module is correctly installed
+#### Test Module Installation
 
-Test that you have installed the module correctly by editing `app.js` in your Titanium app's resource directory:
+To test that you have installed the module correctly, edit the `app.js` file in your Titanium app's resource directory, like so:
 
     var apptentiveModule = require('com.apptentive.titanium');
     Ti.API.info("module is => " + apptentiveModule);
@@ -60,76 +68,45 @@ When you run your Titanium app, you should see the following:
 
     Detected third-party module: com.Apptentive.Titanium/1.0
 
-	[INFO] [object ComApptentiveTitaniumModule] loaded
-	[INFO] module is => [object ComApptentiveTitaniumModule]
+    [INFO] [object ComApptentiveTitaniumModule] loaded
+    [INFO] module is => [object ComApptentiveTitaniumModule]
 
-If you see these statements and no errors in the console, the Apptentive module has been installed and loaded correctly in your Titanium app.
+If you see these statements and no errors appear in the console, the Apptentive module has been installed and loaded correctly in your Titanium app.
 
-##Using the Apptentive module in your Titanium app
+### Implementing Apptentive
 
 Once you have successfully installed the module, you can begin using Apptentive in your Titanium app.
 
+First, set your API Key with the following code snippet:
+
     var apptentiveModule = require('com.apptentive.titanium');
-	apptentiveModule.setApiKey("GET_YOUR_API_KEY_FROM_APPTENTIVE.COM");
+    apptentiveModule.setApiKey("YOUR APPTENTIVE API KEY");
 
-It is important that you set your Apptentive API key, which you can get by signing up [on our website](http://www.apptentive.com/).
+It is important that you set your Apptentive API key, which you can get by signing up on our [website](http://www.apptentive.com/).
 
-You can then begin using the features of Apptentive. For example, you could add a "Give Feedback" button to your interface that collects feedback via Apptentive's Message Center.
+You can then begin using the features of Apptentive. 
 
-``` JavaScript
-var messageCenterButton = Titanium.UI.createButton({
-   title: "Give Feedback",
-   width: 200,
-   height: 50
-});
-win.add(messageCenterButton);
-messageCenterButton.addEventListener('click',function(e)
-{
-   apptentiveModule.presentMessageCenter();
-});
-```
-   
-##Message Center
+#### Message Center
 
-Get feedback from your customers with the Apptentive Message Center.
+Get feedback from your customers with the Apptentive Message Center. Add the following piece of code to the event listener that you want to bring up the feedback interface.
 
     apptentiveModule.presentMessageCenter();
 
 The first time you present the Message Center, the user will be presented with an email feedback form. Thereafter, they will be taken to the Message Center. If you reply to your customers' feedback via the Apptentive website, the replies will be pushed to their in-app Message Center. 
 
-Check for the number of unread messages like so:
+Check for the number of unread messages with the following:
 
     apptentiveModule.unreadMessageCount(); 
 
-You can also listen for our `ATMessageCenterUnreadCountChangedNotification` notification:
+You can also listen for our `ATMessageCenterUnreadCountChangedNotification` notification like so:
 
     apptentiveModule.addEventListener('ATMessageCenterUnreadCountChangedNotification', function(e) {
         Ti.API.info('New unread Message Center messages! ' + e.type);
     }); 
 
-##User info
+#### Ratings
 
-You can pre-load Apptentive with information about the user, which makes their Message Center experience easier:
-
-    apptentiveModule.setInitialUserName("Peter");
-	apptentiveModule.setInitialUserEmailAddress("peter@example.com");
-
-You can also store arbitrary information about the user, which is then visible in your Message Center:
-
-    apptentiveModule.addCustomDataWithKey("data", "key");
-    apptentiveModule.addCustomDataWithKey("Seattle", "city");
-
-Similarly, you can remove custom data:
-
-	apptentiveModule.removeCustomDataWithKey("city");
-
-##App Store Rating Flow
-
-Apptentive also provides an App Store rating flow. A ratings dialog will be displayed based on the number of launches of your application, the amount of time the user has been using it, and the number of significant events the user has completed (for example, levels passed). All of these variables can be modified on Apptentive.com.
-
-First, set your app's App Store ID:  
-
-    apptentiveModule.setAppID("get_this_key_from_itunes_connect");
+Apptentive also provides an App Store rating flow. A ratings dialog will be displayed based on the number of launches of your application, the amount of time the user has been using it, and the number of significant events the user has completed (for example, levels passed). All of these variables can be modified on [Apptentive](http://apptentive.com).
 
 Display the rating flow at a certain point in your code with:
 
@@ -141,40 +118,50 @@ Log significant events, such as completing a level, with:
 
     apptentiveModule.logSignificantEvent();
 
-##In-App Surveys
+#### Surveys
 
 Surveys can be created on our website and presented, in-app, to users.
 
-You can check if there are any available surveys that have been downloaded from the server:
+You can check if there are any available surveys that have been downloaded from the server with the following:
 
     apptentiveModule.hasSurveyAvailableWithNoTags();
-	//...or...//
-    apptentiveModule.hasSurveyAvailableWithTags("testSurvey", "testTag");	
 
-You can also listen for our `ATSurveyNewSurveyAvailableNotification` notification:
+or...
+
+    apptentiveModule.hasSurveyAvailableWithTags("testSurvey", "testTag"); 
+
+You can also listen for our `ATSurveyNewSurveyAvailableNotification` notification by adding this code snippet:
 
     apptentiveModule.addEventListener('ATSurveyNewSurveyAvailableNotification', function(e) {
         Ti.API.info('New Apptentive Surveys! ' + e.type);
     });
 
-If surveys are available, present the surveys in the app:
+If surveys are available, present the surveys in the app by adding:
 
     apptentiveModule.presentSurveyControllerWithNoTags();
-    //...or...//
+
+or...
+
     apptentiveModule.presentSurveyControllerWithTags("testSurvey", "testTag");
 
-We will then send a notification when the survey has been sent to Apptentive:
+We will then send a notification when the survey has been sent to Apptentive. You can let users know by adding this:
 
-	apptentiveModule.addEventListener('ATSurveySentNotification', function(e) {
-	    Ti.API.info('Apptentive Survey was sent! ' + e.type);
-	});
+    apptentiveModule.addEventListener('ATSurveySentNotification', function(e) {
+        Ti.API.info('Apptentive Survey was sent! ' + e.type);
+    });
 
-##Questions? Comments? Help using Apptentive?
+#### User info
 
-Please let us know how we can improve this document or the Apptentive Titanium module!
+You can pre-load Apptentive with information about the user, which makes their Message Center experience easier:
 
-https://github.com/apptentive/apptentive-titanium/issues
+  apptentiveModule.setInitialUserName("Peter");
+  apptentiveModule.setInitialUserEmailAddress("peter@example.com");
 
-If you have any other questions, please contact us and we will get back to you quickly.
+You can also store arbitrary information about the user, which is then visible in your Message Center:
 
-http://www.apptentive.com/contact
+    apptentiveModule.addCustomDataWithKey("data", "key");
+    apptentiveModule.addCustomDataWithKey("Seattle", "city");
+
+Similarly, you can remove custom data:
+
+    apptentiveModule.removeCustomDataWithKey("city");
