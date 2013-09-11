@@ -14,7 +14,7 @@ There are a couple of ways you can get the Apptentive Titanium Module.
 
 [![Appcelerator logo](etc/screenshots/appcelerator_logo.png?raw=true "Appcelerator Marketplace")](https://marketplace.appcelerator.com/apps/6222?19103220)
 
-The Apptentive Titanium module is available on the [Appcelerator Open Mobile Marketplate](https://marketplace.appcelerator.com/apps/6222?1766037170).
+The Apptentive Titanium module is [available on the Appcelerator Open Mobile Marketplate](https://marketplace.appcelerator.com/apps/6222?1766037170).
 
 #### GitHub
 
@@ -80,7 +80,7 @@ Once you have successfully installed the module, you can begin using Apptentive 
 First, set your API Key with the following code snippet:
 
     var apptentiveModule = require('com.apptentive.titanium');
-    apptentiveModule.setApiKey("YOUR APPTENTIVE API KEY");
+    apptentiveModule.setApiKey("YOUR_APPTENTIVE_API_KEY");
 
 It is important that you set your Apptentive API key, which you can get by signing up on our [website](http://www.apptentive.com/).
 
@@ -122,7 +122,7 @@ Log significant events, such as completing a level, with:
 
 Surveys can be created on our website and presented, in-app, to users.
 
-You can check if there are any available surveys that have been downloaded from the server with the following:
+You can check if there are any available surveys that have been downloaded from the server:
 
     apptentiveModule.hasSurveyAvailableWithNoTags();
 
@@ -136,7 +136,7 @@ You can also listen for our `ATSurveyNewSurveyAvailableNotification` notificatio
         Ti.API.info('New Apptentive Surveys! ' + e.type);
     });
 
-If surveys are available, present the surveys in the app by adding:
+If surveys are available, present the surveys in the app:
 
     apptentiveModule.presentSurveyControllerWithNoTags();
 
@@ -144,7 +144,7 @@ or...
 
     apptentiveModule.presentSurveyControllerWithTags("testSurvey", "testTag");
 
-We will then send a notification when the survey has been sent to Apptentive. You can let users know by adding this:
+We will then send a notification when the survey has been sent to Apptentive:
 
     apptentiveModule.addEventListener('ATSurveySentNotification', function(e) {
         Ti.API.info('Apptentive Survey was sent! ' + e.type);
