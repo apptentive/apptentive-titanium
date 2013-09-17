@@ -1,1 +1,2 @@
 v1.0 - Initial version of Apptentive module
+v1.1.0 - Upgraded Titanium module to use the Apptentive v1.1.0 SDK
