@@ -12,7 +12,7 @@ There are a couple of ways you can get the Apptentive Titanium Module.
 
 #### Appcelerator Marketplace
 
-[![Appcelerator logo](etc/screenshots/appcelerator_logo.png?raw=true "Appcelerator Marketplace")](https://marketplace.appcelerator.com/apps/6222?19103220)
+[![Appcelerator logo](https://raw.github.com/apptentive/apptentive-titanium/master/etc/screenshots/appcelerator_logo.png "Appcelerator Marketplace")](https://marketplace.appcelerator.com/apps/6222?19103220)
 
 The Apptentive Titanium module is [available on the Appcelerator Open Mobile Marketplate](https://marketplace.appcelerator.com/apps/6222?1766037170).
 
