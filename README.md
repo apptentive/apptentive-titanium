@@ -30,7 +30,7 @@ com.apptentive.titanium-iphone-1.0.zip
 
 The Apptentive module package (above) should be unzipped into your Titanium directory:
 
-```shell
+```bash
 unzip -u -o com.apptentive.titanium-iphone-1.0.zip -d ~/Library/Application\ Support/Titanium/
 ```
 
