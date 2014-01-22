@@ -211,6 +211,16 @@
     }
 }
 
+#pragma mark Engagement
+
+- (void)engageCodePoint:(id)args
+{
+    ENSURE_UI_THREAD_0_ARGS;
+    ENSURE_SINGLE_ARG(args, NSString);
+    NSString *codePoint = [TiUtils stringValue:args];
+    [[ATConnect sharedConnection] engage:codePoint fromViewController:[TiApp app].controller];
+}
+
 #pragma mark Ratings Flow
 
 - (void)setAppID:(id)args

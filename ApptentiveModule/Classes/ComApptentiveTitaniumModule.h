@@ -34,6 +34,9 @@
 
 - (id)unreadMessageCount:(id)args;
 
+#pragma mark Engagement
+- (void)engageCodePoint:(id)args;
+
 #pragma mark Ratings Flow
 - (void)setAppID:(id)args;
 - (void)showRatingFlowIfConditionsAreMet:(id)args;
