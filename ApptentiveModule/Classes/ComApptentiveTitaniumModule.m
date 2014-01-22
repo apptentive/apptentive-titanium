@@ -190,6 +190,14 @@
     [[ATConnect sharedConnection] presentMessageCenterFromViewController:[TiApp app].controller];
 }
 
+- (void)presentMessageCenterWithCustomData:(id)args
+{
+    ENSURE_UI_THREAD_0_ARGS;
+    ENSURE_SINGLE_ARG_OR_NIL(args, NSDictionary);
+    NSDictionary *customData = [((NSArray *)args) objectAtIndex:0];
+    [[ATConnect sharedConnection] presentMessageCenterFromViewController:[TiApp app].controller withCustomData:customData];
+}
+
 - (id)unreadMessageCount:(id)args
 {
     int *count = (int)[[ATConnect sharedConnection] unreadMessageCount];

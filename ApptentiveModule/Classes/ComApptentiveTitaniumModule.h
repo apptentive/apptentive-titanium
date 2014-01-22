@@ -30,6 +30,8 @@
 
 #pragma mark Message Center
 - (void)presentMessageCenter:(id)args;
+- (void)presentMessageCenterWithCustomData:(id)args;
+
 - (id)unreadMessageCount:(id)args;
 
 #pragma mark Ratings Flow
