@@ -154,18 +154,32 @@
     [[ATConnect sharedConnection] setInitialUserEmailAddress:initialUserEmailAddress];
 }
 
-- (void)addCustomDataWithKey:(id)args
+- (void)addCustomPersonData:(id)args
 {
     NSObject<NSCoding> *data = [((NSArray *)args) objectAtIndex:0];
     NSString *key = [((NSArray *)args) objectAtIndex:1];
-    [[ATConnect sharedConnection] addCustomData:data withKey:key];
+    [[ATConnect sharedConnection] addCustomPersonData:data withKey:key];
 }
 
-- (void)removeCustomDataWithKey:(id)args
+- (void)removeCustomPersonDataWithKey:(id)args
 {
     ENSURE_SINGLE_ARG(args, NSString);
     NSString *key = [TiUtils stringValue:args];
-    [[ATConnect sharedConnection] removeCustomDataWithKey:key];
+    [[ATConnect sharedConnection] removeCustomPersonDataWithKey:key];
+}
+
+- (void)addCustomDeviceData:(id)args
+{
+    NSObject<NSCoding> *data = [((NSArray *)args) objectAtIndex:0];
+    NSString *key = [((NSArray *)args) objectAtIndex:1];
+    [[ATConnect sharedConnection] addCustomDeviceData:(NSString *)data withKey:key];
+}
+
+- (void)removeCustomDeviceDataWithKey:(id)args
+{
+    ENSURE_SINGLE_ARG(args, NSString);
+    NSString *key = [TiUtils stringValue:args];
+    [[ATConnect sharedConnection] removeCustomDeviceDataWithKey:key];
 }
 
 #pragma mark Message Center

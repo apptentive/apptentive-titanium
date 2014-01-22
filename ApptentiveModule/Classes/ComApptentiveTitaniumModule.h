@@ -20,8 +20,13 @@
 - (void)setInitialUserName:(id)args;
 - (id)initialUserEmailAddress:(id)args;
 - (void)setInitialUserEmailAddress:(id)args;
-- (void)addCustomDataWithKey:(id)args;
-- (void)removeCustomDataWithKey:(id)args;
+
+- (void)addCustomPersonData:(id)args;
+- (void)removeCustomPersonDataWithKey:(id)args;
+
+- (void)addCustomDeviceData:(id)args;
+- (void)removeCustomDeviceDataWithKey:(id)args;
+
 
 #pragma mark Message Center
 - (void)presentMessageCenter:(id)args;
