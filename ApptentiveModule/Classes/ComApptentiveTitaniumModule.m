@@ -244,10 +244,11 @@
     [[ATAppRatingFlow sharedRatingFlow] setAppID:appID];
 }
 
-- (void)showRatingFlowIfConditionsAreMet:(id)args
+- (id)showRatingFlowIfConditionsAreMet:(id)args
 {
     ENSURE_UI_THREAD_0_ARGS;
-    [[ATAppRatingFlow sharedRatingFlow] showRatingFlowFromViewControllerIfConditionsAreMet:[[TiApp app] controller]];
+    BOOL shown = [[ATAppRatingFlow sharedRatingFlow] showRatingFlowFromViewControllerIfConditionsAreMet:[[TiApp app] controller]];
+    return [NSNumber numberWithBool:shown];
 }
 
 - (void)logSignificantEvent:(id)args
@@ -255,7 +256,7 @@
     [[ATAppRatingFlow sharedRatingFlow] logSignificantEvent];
 }
 
-- (void)openAppStore
+- (void)openAppStore:(id)args
 {
     [[ATAppRatingFlow sharedRatingFlow] openAppStore];
 }
