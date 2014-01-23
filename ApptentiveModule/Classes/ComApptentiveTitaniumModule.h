@@ -43,6 +43,7 @@
 - (void)setAppID:(id)args;
 - (void)showRatingFlowIfConditionsAreMet:(id)args;
 - (void)logSignificantEvent:(id)args;
+- (void)openAppStore;
 
 #pragma mark - Surveys
 - (id)hasSurveyAvailableWithNoTags:(id)args;

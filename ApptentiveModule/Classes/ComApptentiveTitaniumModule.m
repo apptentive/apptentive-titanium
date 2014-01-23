@@ -255,6 +255,11 @@
     [[ATAppRatingFlow sharedRatingFlow] logSignificantEvent];
 }
 
+- (void)openAppStore
+{
+    [[ATAppRatingFlow sharedRatingFlow] openAppStore];
+}
+
 #pragma mark - Surveys
 
 - (id)hasSurveyAvailableWithNoTags:(id)args
