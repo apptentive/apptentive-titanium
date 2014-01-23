@@ -36,9 +36,13 @@ email = ApptentiveModule.initialUserEmailAddress();
 if (email != "titanium@example.com") {throw Error("Apptentive email address was not properly set!");}
 
 //Custom data
-ApptentiveModule.addCustomDataWithKey("1 Infinite Loop, Cupertino CA", "address");
-ApptentiveModule.addCustomDataWithKey("RemoveThisData", "remove");
-ApptentiveModule.removeCustomDataWithKey("remove");
+ApptentiveModule.addCustomPersonData("WA", "address");
+ApptentiveModule.addCustomPersonData("RemoveThisData", "remove");
+ApptentiveModule.removeCustomPersonDataWithKey("remove");
+
+ApptentiveModule.addCustomDeviceData("sprint", "carrier");
+ApptentiveModule.addCustomDeviceData("RemoveThisData", "remove");
+ApptentiveModule.removeCustomDeviceDataWithKey("remove");
 
 //Message Center
 var messageCenterButton = Titanium.UI.createButton({
