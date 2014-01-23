@@ -15,23 +15,25 @@ Ti.API.info("module is => " + ApptentiveModule);
 //API Key
 var apiKey = ApptentiveModule.apiKey();
 if (apiKey) {throw Error("Apptentive API key should be nil when not set!");}
-ApptentiveModule.setApiKey("XYZ");
+ApptentiveModule.setApiKey("e3d95bb0caa2346f557001694be0bde503cdc9d30aa6defafbba5333d91a30f0");
 apiKey = ApptentiveModule.apiKey();
-if (apiKey != "XYZ") {throw Error("Apptentive API key was not properly set!");}
+if (apiKey != "e3d95bb0caa2346f557001694be0bde503cdc9d30aa6defafbba5333d91a30f0") {throw Error("Apptentive API key was not properly set!");}
+
+ApptentiveModule.setAppID("343200656");
 
 //UserName
 var userName = ApptentiveModule.initialUserName();
 if (userName) {throw Error("Apptentive username should be nil when not set!");}
-ApptentiveModule.setInitialUserName("Steven P. Jobs");
+ApptentiveModule.setInitialUserName("Titan I. Um");
 userName = ApptentiveModule.initialUserName();
-if (userName != "Steven P. Jobs") {throw Error("Apptentive username was not properly set!");}
+if (userName != "Titan I. Um") {throw Error("Apptentive username was not properly set!");}
 
 //EmailAddress
 var email = ApptentiveModule.initialUserEmailAddress();
 if (email) {throw Error("Apptentive email should be nil when not set!");}
-ApptentiveModule.setInitialUserEmailAddress("steve@apple.com");
+ApptentiveModule.setInitialUserEmailAddress("titanium@example.com");
 email = ApptentiveModule.initialUserEmailAddress();
-if (email != "steve@apple.com") {throw Error("Apptentive email address was not properly set!");}
+if (email != "titanium@example.com") {throw Error("Apptentive email address was not properly set!");}
 
 //Custom data
 ApptentiveModule.addCustomDataWithKey("1 Infinite Loop, Cupertino CA", "address");
