@@ -57,6 +57,10 @@ win.add(messageCenterButton);
 messageCenterButton.addEventListener('click',function(e)
 {
    ApptentiveModule.presentMessageCenter();
+   
+   var dictionary = {};//create new object
+   dictionary["sentByDemo"] = 1;//set key1
+   //ApptentiveModule.presentMessageCenterWithCustomData(dictionary);
 });
 
 var messageCenterCountButton = Titanium.UI.createButton({
