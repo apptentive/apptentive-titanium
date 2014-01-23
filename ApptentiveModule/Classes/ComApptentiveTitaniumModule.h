@@ -27,6 +27,8 @@
 - (void)addCustomDeviceData:(id)args;
 - (void)removeCustomDeviceDataWithKey:(id)args;
 
+- (void)addIntegrationWithConfiguration:(id)args;
+- (void)removeIntegration:(id)args;
 
 #pragma mark Message Center
 - (void)presentMessageCenter:(id)args;

@@ -182,6 +182,20 @@
     [[ATConnect sharedConnection] removeCustomDeviceDataWithKey:key];
 }
 
+- (void)addIntegrationWithConfiguration:(id)args
+{
+    NSString *integration = [((NSArray *)args) objectAtIndex:0];
+    NSDictionary *configuration = [((NSArray *)args) objectAtIndex:1];
+    [[ATConnect sharedConnection] addIntegration:integration withConfiguration:configuration];
+}
+
+- (void)removeIntegration:(id)args
+{
+    ENSURE_SINGLE_ARG(args, NSString);
+    NSString *integration = [TiUtils stringValue:args];
+    [[ATConnect sharedConnection] removeIntegration:integration];
+}
+
 #pragma mark Message Center
 
 - (void)presentMessageCenter:(id)args
