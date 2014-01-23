@@ -44,6 +44,13 @@ ApptentiveModule.addCustomDeviceData("sprint", "carrier");
 ApptentiveModule.addCustomDeviceData("RemoveThisData", "remove");
 ApptentiveModule.removeCustomDeviceDataWithKey("remove");
 
+//3rd Party Integrations
+var dictionary = {};
+dictionary["fake_api_key"] = "ABC_XYZ";
+ApptentiveModule.addIntegrationWithConfiguration("3rd_party_service", dictionary);
+ApptentiveModule.addIntegrationWithConfiguration("remove_this", dictionary);
+ApptentiveModule.removeIntegration("remove_this");
+
 //Message Center
 var messageCenterButton = Titanium.UI.createButton({
    title: "Present Message Center",
