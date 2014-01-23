@@ -26,4 +26,4 @@
 // IMPORTANT NOTE: always use $(inherited) in your overrides
 // 
 
-OTHER_LDFLAGS=$(inherited) -framework CoreData -framework CoreGraphics -framework CoreText -framework CoreTelephony -framework Foundation -framework QuartzCore -framework SystemConfiguration -framework UIKit
+OTHER_LDFLAGS=$(inherited) -framework CoreData -framework CoreGraphics -framework CoreText -framework CoreTelephony -framework Foundation -framework QuartzCore -framework SystemConfiguration -framework UIKit -framework Accelerate -framework StoreKit
