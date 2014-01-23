@@ -263,6 +263,7 @@
 
 - (void)openAppStore:(id)args
 {
+    ENSURE_UI_THREAD_0_ARGS;
     [[ATAppRatingFlow sharedRatingFlow] openAppStore];
 }
 
@@ -290,13 +291,13 @@
 
 - (void)presentSurveyControllerWithNoTags:(id)args
 {
-    ENSURE_UI_THREAD_0_ARGS
+    ENSURE_UI_THREAD_0_ARGS;
     [ATSurveys presentSurveyControllerWithNoTagsFromViewController:[[TiApp app] controller]];
 }
 
 - (void)presentSurveyControllerWithTags:(id)args
 {
-    ENSURE_UI_THREAD_1_ARG(args)
+    ENSURE_UI_THREAD_1_ARG(args);
     NSSet *tags = [NSSet setWithArray:args];
     [ATSurveys presentSurveyControllerWithTags:tags fromViewController:[[TiApp app] controller]];
 }
