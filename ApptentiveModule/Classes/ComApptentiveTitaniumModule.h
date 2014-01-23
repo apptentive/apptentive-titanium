@@ -41,7 +41,7 @@
 
 #pragma mark Ratings Flow
 - (void)setAppID:(id)args;
-- (id)showRatingFlowIfConditionsAreMet:(id)args;
+- (void)showRatingFlowIfConditionsAreMet:(id)args;
 - (void)logSignificantEvent:(id)args;
 - (void)openAppStore:(id)args;
 

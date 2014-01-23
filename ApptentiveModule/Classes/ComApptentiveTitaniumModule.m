@@ -244,11 +244,17 @@
     [[ATAppRatingFlow sharedRatingFlow] setAppID:appID];
 }
 
-- (id)showRatingFlowIfConditionsAreMet:(id)args
+- (void)showRatingFlowIfConditionsAreMet:(id)args
 {
     ENSURE_UI_THREAD_0_ARGS;
     BOOL shown = [[ATAppRatingFlow sharedRatingFlow] showRatingFlowFromViewControllerIfConditionsAreMet:[[TiApp app] controller]];
-    return [NSNumber numberWithBool:shown];
+    
+    // ENSURE_UI_THREAD_0_ARGS;
+    // Docs say: "You can only use this method if you have no return result."
+    // http://developer.appcelerator.com/question/161830/alternative-to-ensureuithread0args-when-proxy-method-returns-a-value
+    
+    // Thus we can't return `shown` until we find an alternative.
+    //return [NSNumber numberWithBool:shown];
 }
 
 - (void)logSignificantEvent:(id)args
