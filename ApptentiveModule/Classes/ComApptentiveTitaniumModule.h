@@ -36,6 +36,10 @@
 
 - (id)unreadMessageCount:(id)args;
 
+- (void)sendAttachmentText:(id)args;
+- (void)sendAttachmentImage:(id)args;
+- (void)sendAttachmentFileWithMimeType:(id)args;
+
 #pragma mark Engagement
 - (void)engageCodePoint:(id)args;
 

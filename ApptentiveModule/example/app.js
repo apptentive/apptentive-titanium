@@ -100,7 +100,18 @@ var showRatingsFlowButton = Titanium.UI.createButton({
 win.add(showRatingsFlowButton);
 showRatingsFlowButton.addEventListener('click',function(e)
 {
-   ApptentiveModule.showRatingFlowIfConditionsAreMet();
+   //ApptentiveModule.showRatingFlowIfConditionsAreMet();
+   
+   ApptentiveModule.sendAttachmentText("hidden");
+   /*
+   
+   ApptentiveModule.sendAttachmentImage(
+   ApptentiveModule
+   
+   - (void)sendAttachmentText:(id)args;
+   - (void)sendAttachmentImage:(id)args;
+   - (void)sendAttachmentFileWithMimeType:(id)args;
+   */
 });
 
 var logEventButton = Titanium.UI.createButton({

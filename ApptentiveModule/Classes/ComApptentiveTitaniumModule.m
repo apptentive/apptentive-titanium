@@ -224,6 +224,28 @@
     }
 }
 
+- (void)sendAttachmentText:(id)args
+{
+    ENSURE_SINGLE_ARG(args, NSString);
+    NSString *text = [TiUtils stringValue:args];
+    
+    [[ATConnect sharedConnection] sendAttachmentText:text];
+}
+
+- (void)sendAttachmentImage:(id)args
+{
+    ENSURE_SINGLE_ARG(args, UIImage);
+    UIImage *image = [args firstObject];
+    [[ATConnect sharedConnection] sendAttachmentImage:image];
+}
+
+- (void)sendAttachmentFileWithMimeType:(id)args
+{
+    NSData *fileData = [args objectAtIndex:0];
+    NSString *mimeType = [args objectAtIndex:1];
+    [[ATConnect sharedConnection] sendAttachmentFile:fileData withMimeType:mimeType];
+}
+
 #pragma mark Engagement
 
 - (void)engageCodePoint:(id)args
