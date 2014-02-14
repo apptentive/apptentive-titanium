@@ -2,12 +2,12 @@
 # this is your module manifest and used by Titanium
 # during compilation, packaging, distribution, etc.
 #
-version: 1.2.5
+version: 1.2.7
 apiversion: 2
 description: Apptentive module for Titanium
 author: Apptentive
 license: BSD 3-Clause License
-copyright: Copyright 2013 Apptentive
+copyright: Copyright 2014 Apptentive
 
 
 # these should not be edited
