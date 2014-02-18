@@ -16,10 +16,14 @@
 #pragma mark Apptentive Shared Features
 - (id)apiKey:(id)args;
 - (void)setApiKey:(id)args;
+
 - (id)initialUserName:(id)args;
 - (void)setInitialUserName:(id)args;
 - (id)initialUserEmailAddress:(id)args;
 - (void)setInitialUserEmailAddress:(id)args;
+
+- (void)setInitiallyUseMessageCenter:(id)args;
+- (void)setTintColor:(id)args;
 
 - (void)addCustomPersonData:(id)args;
 - (void)removeCustomPersonDataWithKey:(id)args;

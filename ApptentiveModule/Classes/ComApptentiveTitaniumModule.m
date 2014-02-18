@@ -39,15 +39,15 @@
 	// you *must* call the superclass
 	[super startup];
 	
-	NSLog(@"[INFO] %@ loaded",self);
+	NSLog(@"[INFO] %@ loaded", self);
     
-    //Apptentive
+    // Apptentive
     ATConnect *connection __attribute__((unused)) = [ATConnect sharedConnection];
     
-    //Message Center Notifications
+    // Message Center Notifications
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(unreadMessageCountChanged:) name:ATMessageCenterUnreadCountChangedNotification object:nil];
         
-    //Survey Notifications
+    // Survey Notifications
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(surveyBecameAvailable:) name:ATSurveyNewSurveyAvailableNotification object:nil];
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(surveyWasSent:) name:ATSurveySentNotification object:nil];
 }
@@ -61,7 +61,7 @@
 	// you *must* call the superclass
 	[super shutdown:sender];
     
-    //Apptentive
+    // Apptentive
     [[NSNotificationCenter defaultCenter] removeObserver:self name:ATMessageCenterUnreadCountChangedNotification object:nil];
     [[NSNotificationCenter defaultCenter] removeObserver:self name:ATSurveyNewSurveyAvailableNotification object:nil];
     [[NSNotificationCenter defaultCenter] removeObserver:self name:ATSurveySentNotification object:nil];
@@ -152,6 +152,20 @@
     ENSURE_SINGLE_ARG(args, NSString);
     NSString *initialUserEmailAddress = [TiUtils stringValue:args];
     [[ATConnect sharedConnection] setInitialUserEmailAddress:initialUserEmailAddress];
+}
+
+- (void)setInitiallyUseMessageCenter:(id)args
+{
+    ENSURE_SINGLE_ARG(args, NSNumber);
+    NSNumber *initiallyUseMessageCenter = [TiUtils numberFromObject:args];
+    [ATConnect sharedConnection].initiallyUseMessageCenter = [initiallyUseMessageCenter boolValue];
+}
+
+- (void)setTintColor:(id)args
+{
+    ENSURE_SINGLE_ARG(args, NSString);
+    UIColor *tintColor = [[TiUtils colorValue:args] color];
+    [ATConnect sharedConnection].tintColor = tintColor;
 }
 
 - (void)addCustomPersonData:(id)args
@@ -253,7 +267,14 @@
     ENSURE_UI_THREAD_1_ARG(args);
     ENSURE_SINGLE_ARG(args, NSString);
     NSString *codePoint = [TiUtils stringValue:args];
-    [[ATConnect sharedConnection] engage:codePoint fromViewController:[TiApp app].controller];
+    BOOL shown = [[ATConnect sharedConnection] engage:codePoint fromViewController:[TiApp app].controller];
+
+    // ENSURE_UI_THREAD_0_ARGS;
+    // Docs say: "You can only use this method if you have no return result."
+    // http://developer.appcelerator.com/question/161830/alternative-to-ensureuithread0args-when-proxy-method-returns-a-value
+    
+    // Thus we can't return `shown` until we find an alternative.
+    //return [NSNumber numberWithBool:shown];
 }
 
 #pragma mark Ratings Flow
