@@ -87,11 +87,12 @@ If you see these statements and no errors appear in the console, the Apptentive 
 
 Once you have successfully installed the module, you can begin using Apptentive in your Titanium app.
 
-First, set your API Key with the following code snippet:
+First, set your API Key and App Store ID:
 
 ```javascript
 var apptentiveModule = require('com.apptentive.titanium');
-apptentiveModule.setApiKey("YOUR_APPTENTIVE_API_KEY");
+apptentiveModule.setApiKey("Your_Apptentive_API_Key");
+ApptentiveModule.setAppID("Your_App_Store_ID");
 ```
 
 It is important that you set your Apptentive API key, which you can get by signing up on our [website](http://www.apptentive.com/).
