@@ -1,3 +1,11 @@
+# Notice!
+
+**Hello**.  The Apptentive Titanium Module has been discontinued and is no longer supported.  We are still actively maintaining our [iOS](http://github.com/apptentive/apptentive-ios) and [Android](http://github.com/apptentive/apptentive-android) SDKs.  If you have any questions, please contact us at [support@apptentive.com](mailto:support@apptentive.com?subject=Titanium%20Module).
+
+
+---
+---
+
 # Apptentive Titanium Module
 
 The Apptentive Titanium module allows you to add a quick and easy in-app-feedback mechanism to your Titanium applications. Feedback is sent to the Apptentive web service.
